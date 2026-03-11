@@ -6,41 +6,29 @@ _Configure your CodeQL workflows with a language matrix to simplify your code sc
 
 </header>
 
-## Step 2: Have autobuild run only when needed
+## Finish
 
-_Nice work! :tada: You modified your workflow to use a language matrix!_
+_Congratulations friend, you've completed this course!_
 
-With the language matrix specified we can see the languages that we want to scan. One of those languages is a compiled language, and as such will not work correctly with how we have the workflow set up. We need to make sure that the autobuild step is included _and_ only runs when it is needed.
+<img src="https://octodex.github.com/images/welcometocat.png" alt=celebrate width=300 align=right>
 
-Autobuild for CodeQL is a feature that automatically attempts to build any compiled languages in your repository. It works by detecting the build system in your repository and executing the appropriate commands to compile the code, enabling CodeQL to analyze the compiled language.
+Here's a recap of all the tasks you've accomplished in your repository:
 
-Let's try this out with our existing CodeQL workflow file.
+-   You've learned how to use a language matrix with CodeQL workflows.
+-   You've learned how about the CodeQL autobuild action works.
+-   You've learned how to use contextual expressions.
 
-### :keyboard: Activity: Configure the workflow to use autobuild for the `java-kotlin` language
+### Additional learning and resources
 
-1. Navigate to the `.github/workflows` directory in your repository.
-1. Open the `codeql.yml` file.
-1. Add the autobuild step to the file in between the `Initialize CodeQL` and `Perform CodeQL Analysis` steps:
-    ```yaml
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
-    ```
-1. Ensure that your indentation is correct after adding the step.
-1. Now we need to make sure that the autobuild step only runs when it is needed. Add to the `Autobuild` step a conditional expression that checks to make sure the language is `java-kotlin`.
+- [Configuring code scanning](https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning)
 
-<details>
-  <summary>Autobuild step after adding conditional</summary>
+### What's next?
 
-```yaml
-    - if: ${{ contains(matrix.language, 'java-kotlin') }}
-      name: Autobuild
-      uses: github/codeql-action/autobuild@v3
-```
-
-</details>
-    
-1. Commit the changes directly to the `main` branch.
-1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+-   Learn more about autobuild for compiled languages: [CodeQL code scanning for compiled languages](https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages).
+-   [We'd love to hear what you thought of this course](https://github.com/skills/.github/discussions).
+-   [Learn another GitHub skill](https://github.com/skills).
+-   [Read the Get started with GitHub docs](https://docs.github.com/en/get-started).
+-   To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
 <footer>
 
